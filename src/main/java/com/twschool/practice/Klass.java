@@ -3,7 +3,7 @@ package com.twschool.practice;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Klass {
+public class Klass implements KlassSubject {
     private final int klassNumber;
     private final List<Student> students = new ArrayList<>();
     private Teacher teacher;
@@ -19,7 +19,7 @@ public class Klass {
 
     public void appendMember(Student student) {
         students.add(student);
-        this.klassObservers.add(student);
+        this.register(student);
     }
 
     public List<Student> getStudents() {
@@ -27,8 +27,13 @@ public class Klass {
     }
 
     public void assign(Teacher teacher) {
-        this.teacher = teacher;   
-        this.klassObservers.add(teacher);
+        this.teacher = teacher;
+        register(teacher);
+    }
+
+    @Override
+    public void register(KlassObserver klassObserver) {
+        this.klassObservers.add(klassObserver);
     }
 
     public Teacher getTeacher() {

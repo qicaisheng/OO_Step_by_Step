@@ -44,14 +44,21 @@ public class Student extends Person {
     }
 
     public void notifyKlassChanged(Klass previousKlass) {
-        String message = introduceNow();
-        previousKlass.getTeacher().receive(message);
-        klass.getTeacher().receive(message);
+        notifyKlassLeaved(previousKlass);
+        notifyKlassJoined();
+    }
+
+    private void notifyKlassLeaved(Klass previousKlass) {
+        previousKlass.getTeacher().receive(introduceNow());
         previousKlass.getStudents().stream()
                 .filter(student -> !student.getName().equals(getName()))
-                .forEach(otherStudent -> otherStudent.receive(message));
+                .forEach(otherStudent -> otherStudent.receive(introduceNow()));
+    }
+
+    private void notifyKlassJoined() {
+        klass.getTeacher().receive(introduceNow());
         klass.getStudents().stream()
                 .filter(student -> !student.getName().equals(getName()))
-                .forEach(otherStudent -> otherStudent.receive(message));
+                .forEach(otherStudent -> otherStudent.receive(introduceNow()));
     }
 }

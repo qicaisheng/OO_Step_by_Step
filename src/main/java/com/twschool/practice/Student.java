@@ -3,7 +3,7 @@ package com.twschool.practice;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student extends Person {
+public class Student extends Person implements KlassObserver {
     private Klass klass;
     private final List<String> notifyMessages = new ArrayList<>();
 
@@ -24,6 +24,7 @@ public class Student extends Person {
         klass.notifyNameChanged(previousName, this);
     }
 
+    @Override
     public void receive(String message) {
         notifyMessages.add(message);
     }

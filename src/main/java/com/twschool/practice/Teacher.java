@@ -3,7 +3,7 @@ package com.twschool.practice;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Teacher extends Person {
+public class Teacher extends Person implements KlassObserver {
     private final List<String> notifyMessages = new ArrayList<>();
 
     public Teacher(String name, int age) {
@@ -19,6 +19,7 @@ public class Teacher extends Person {
         return notifyMessages;
     }
 
+    @Override
     public void receive(String message) {
         notifyMessages.add(message);
     }

@@ -19,7 +19,7 @@ public class Teacher extends Person {
         return notifyMessages;
     }
 
-    public void recive(String message) {
+    public void receive(String message) {
         notifyMessages.add(message);
     }
 }

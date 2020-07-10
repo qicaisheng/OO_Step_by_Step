@@ -22,7 +22,7 @@ public class Student extends Person {
         String previousName = getName();
         super.setName(name);
         String message = introduceNow();
-        klass.getTeacher().recive(message);
+        klass.getTeacher().receive(message);
         klass.getStudents().stream()
                 .filter(student -> !student.getName().equals(previousName))
                 .forEach(otherStudent -> otherStudent.receive(message));
@@ -44,8 +44,8 @@ public class Student extends Person {
         Klass previousKlass = this.klass;
         this.klass = klass;
         String message = introduceNow();
-        previousKlass.getTeacher().recive(message);
-        klass.getTeacher().recive(message);
+        previousKlass.getTeacher().receive(message);
+        klass.getTeacher().receive(message);
         previousKlass.getStudents().stream()
                 .filter(student -> !student.getName().equals(getName()))
                 .forEach(otherStudent -> otherStudent.receive(message));

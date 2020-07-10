@@ -7,7 +7,8 @@ public class StudentTest {
 
     @Test
     public void should_output_name_and_age_and_class_number_when_introduce() {
-        Person student = new Student("Tom", 21, 2);
+        Klass klass = new Klass(2);
+        Person student = new Student("Tom", 21, klass);
         
         String message = student.introduce();
 

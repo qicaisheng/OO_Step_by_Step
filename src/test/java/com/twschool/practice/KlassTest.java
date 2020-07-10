@@ -3,6 +3,8 @@ package com.twschool.practice;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
 public class KlassTest {
 
     @Test
@@ -12,5 +14,17 @@ public class KlassTest {
         int klassNumber = klass.getKlassNumber();
 
         Assert.assertEquals(2, klassNumber);
+    }
+
+    @Test
+    public void should_get_all_students_in_klass_when_get_students_given_students_join_klass() {
+        Klass klass = new Klass(2);
+        klass.appendMember(new Student("Tom", 21, 2));
+        klass.appendMember(new Student("Steven", 22, 2));
+
+        List<Student> students = klass.getStudents();
+        
+        Assert.assertEquals(2, students.size());
+        Assert.assertEquals("Tom", students.get(0).getName());
     }
 }

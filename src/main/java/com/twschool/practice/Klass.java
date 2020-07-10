@@ -1,7 +1,11 @@
 package com.twschool.practice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Klass {
-    private int klassNumber;
+    private final int klassNumber;
+    private final List<Student> students = new ArrayList<>();
 
     public Klass(int klassNumber) {
         this.klassNumber = klassNumber;
@@ -10,4 +14,13 @@ public class Klass {
     public int getKlassNumber() {
         return klassNumber;
     }
+
+    public void appendMember(Student student) {
+        students.add(student);
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
 }

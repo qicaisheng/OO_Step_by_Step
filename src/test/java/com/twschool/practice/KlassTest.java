@@ -19,8 +19,8 @@ public class KlassTest {
     @Test
     public void should_get_all_students_in_klass_when_get_students_given_students_join_klass() {
         Klass klass = new Klass(2);
-        klass.appendMember(new Student("Tom", 21, 2));
-        klass.appendMember(new Student("Steven", 22, 2));
+        klass.appendMember(new Student("Tom", 21, new Klass(2)));
+        klass.appendMember(new Student("Steven", 22, new Klass(2)));
 
         List<Student> students = klass.getStudents();
         

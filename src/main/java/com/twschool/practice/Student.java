@@ -19,9 +19,8 @@ public class Student extends Person implements KlassObserver {
     
     @Override
     public void setName(String name) {
-        String previousName = getName();
         super.setName(name);
-        klass.notifyNameChanged(previousName, this);
+        klass.notifyNameChanged(this);
     }
 
     @Override

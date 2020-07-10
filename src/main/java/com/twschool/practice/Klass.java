@@ -35,7 +35,7 @@ public class Klass {
         return teacher;
     }
 
-    public void notifyNameChanged(String previousName, Student student) {
+    public void notifyNameChanged(Student student) {
         String message = student.introduceNow();
         getTeacher().receive(message);
         getStudents().stream()

@@ -38,21 +38,18 @@ public class Klass {
     public void notifyNameChanged(Student student) {
         String message = student.introduceNow();
         getTeacher().receive(message);
-        getStudents().stream()
-                .forEach(otherStudent -> otherStudent.receive(message));
+        getStudents().forEach(otherStudent -> otherStudent.receive(message));
     }
 
     void notifyKlassJoined(Student student) {
         String message = student.introduceNow();
         getTeacher().receive(message);
-        getStudents().stream()
-                .forEach(otherStudent -> otherStudent.receive(message));
+        getStudents().forEach(otherStudent -> otherStudent.receive(message));
     }
 
     void notifyKlassLeaved(Student student) {
         String message = student.introduceNow();
         getTeacher().receive(message);
-        getStudents().stream()
-                .forEach(otherStudent -> otherStudent.receive(message));
+        getStudents().forEach(otherStudent -> otherStudent.receive(message));
     }
 }

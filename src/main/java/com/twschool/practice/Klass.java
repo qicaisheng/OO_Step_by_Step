@@ -44,7 +44,7 @@ public class Klass implements KlassSubject {
         notifyChanged(student);
     }
 
-    private void notifyChanged(Student student) {
+    public void notifyChanged(Student student) {
         String message = student.introduceNow();
         klassObservers.forEach(klassObserver -> klassObserver.receive(message));
     }

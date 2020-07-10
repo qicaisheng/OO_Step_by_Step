@@ -7,6 +7,7 @@ public class Klass {
     private final int klassNumber;
     private final List<Student> students = new ArrayList<>();
     private Teacher teacher;
+    private final List<KlassObserver> klassObservers = new ArrayList<>();
 
     public Klass(int klassNumber) {
         this.klassNumber = klassNumber;
@@ -18,6 +19,7 @@ public class Klass {
 
     public void appendMember(Student student) {
         students.add(student);
+        this.klassObservers.add(student);
     }
 
     public List<Student> getStudents() {
@@ -26,6 +28,7 @@ public class Klass {
 
     public void assign(Teacher teacher) {
         this.teacher = teacher;   
+        this.klassObservers.add(teacher);
     }
 
     public Teacher getTeacher() {

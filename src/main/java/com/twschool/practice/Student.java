@@ -24,7 +24,7 @@ public class Student extends Person {
         notifyNameChanged(previousName);
     }
 
-    private void notifyNameChanged(String previousName) {
+    public void notifyNameChanged(String previousName) {
         String message = introduceNow();
         klass.getTeacher().receive(message);
         klass.getStudents().stream()
@@ -32,7 +32,7 @@ public class Student extends Person {
                 .forEach(otherStudent -> otherStudent.receive(message));
     }
 
-    private void receive(String message) {
+    public void receive(String message) {
         notifyMessages.add(message);
     }
 
@@ -51,7 +51,7 @@ public class Student extends Person {
 
     }
 
-    private void notifyKlassChanged(Klass previousKlass) {
+    public void notifyKlassChanged(Klass previousKlass) {
         String message = introduceNow();
         previousKlass.getTeacher().receive(message);
         klass.getTeacher().receive(message);

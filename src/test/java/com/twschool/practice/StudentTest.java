@@ -32,4 +32,21 @@ public class StudentTest {
         Assert.assertEquals("My name is Tom1. I am 21 years old. I am a Student of Class 2 now.", messages.get(0));
     }
 
+    @Test
+    public void should_notify_klass_other_students_when_student_name_change() {
+        Klass klass = new Klass(2);
+        Teacher teacher = new Teacher("Matt", 30);
+        Student tom = new Student("Tom", 21, klass);
+        Student steven = new Student("Steven", 21, klass);
+        klass.assign(teacher);
+        klass.appendMember(tom);
+        klass.appendMember(steven);
+
+        tom.setName("Tom1");
+
+        List<String> messages = steven.getNotifyMessages();
+        Assert.assertEquals(1, messages.size());
+        Assert.assertEquals("My name is Tom1. I am 21 years old. I am a Student of Class 2 now.", messages.get(0));
+    }
+
 }

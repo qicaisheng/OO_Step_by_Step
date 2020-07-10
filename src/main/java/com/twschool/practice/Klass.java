@@ -39,4 +39,11 @@ public class Klass {
                 .filter(anyStudent -> !anyStudent.getName().equals(previousName))
                 .forEach(otherStudent -> otherStudent.receive(message));
     }
+
+    void notifyKlassJoined(Student student) {
+        getTeacher().receive(student.introduceNow());
+        getStudents().stream()
+                .filter(anyStudent -> !anyStudent.getName().equals(student.getName()))
+                .forEach(otherStudent -> otherStudent.receive(student.introduceNow()));
+    }
 }

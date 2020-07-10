@@ -45,7 +45,7 @@ public class Student extends Person {
 
     public void notifyKlassChanged(Klass previousKlass) {
         notifyKlassLeaved(previousKlass);
-        notifyKlassJoined();
+        klass.notifyKlassJoined(this);
     }
 
     private void notifyKlassLeaved(Klass previousKlass) {
@@ -55,10 +55,4 @@ public class Student extends Person {
                 .forEach(otherStudent -> otherStudent.receive(introduceNow()));
     }
 
-    private void notifyKlassJoined() {
-        klass.getTeacher().receive(introduceNow());
-        klass.getStudents().stream()
-                .filter(student -> !student.getName().equals(getName()))
-                .forEach(otherStudent -> otherStudent.receive(introduceNow()));
-    }
 }

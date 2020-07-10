@@ -27,4 +27,16 @@ public class KlassTest {
         Assert.assertEquals(2, students.size());
         Assert.assertEquals("Tom", students.get(0).getName());
     }
+
+    @Test
+    public void should_get_teacher_in_klass_given_klass_assign_teacher() {
+        Klass klass = new Klass(2);
+        klass.assign(new Teacher("Katt", 30));
+
+        Teacher teacher = klass.getTeacher();
+        
+        Assert.assertNotNull(teacher);
+        Assert.assertEquals("Katt", teacher.getName());
+        Assert.assertEquals(30, teacher.getAge());
+    }
 }

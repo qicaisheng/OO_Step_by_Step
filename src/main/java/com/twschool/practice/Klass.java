@@ -6,6 +6,7 @@ import java.util.List;
 public class Klass {
     private final int klassNumber;
     private final List<Student> students = new ArrayList<>();
+    private Teacher teacher;
 
     public Klass(int klassNumber) {
         this.klassNumber = klassNumber;
@@ -23,4 +24,11 @@ public class Klass {
         return students;
     }
 
+    public void assign(Teacher teacher) {
+        this.teacher = teacher;   
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
 }

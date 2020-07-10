@@ -21,6 +21,10 @@ public class Student extends Person {
     public void setName(String name) {
         String previousName = getName();
         super.setName(name);
+        notifyNameChanged(previousName);
+    }
+
+    private void notifyNameChanged(String previousName) {
         String message = introduceNow();
         klass.getTeacher().receive(message);
         klass.getStudents().stream()
@@ -43,6 +47,11 @@ public class Student extends Person {
     public void setKlass(Klass klass) {
         Klass previousKlass = this.klass;
         this.klass = klass;
+        notifyKlassChanged(previousKlass);
+
+    }
+
+    private void notifyKlassChanged(Klass previousKlass) {
         String message = introduceNow();
         previousKlass.getTeacher().receive(message);
         klass.getTeacher().receive(message);
@@ -52,6 +61,5 @@ public class Student extends Person {
         klass.getStudents().stream()
                 .filter(student -> !student.getName().equals(getName()))
                 .forEach(otherStudent -> otherStudent.receive(message));
-
     }
 }

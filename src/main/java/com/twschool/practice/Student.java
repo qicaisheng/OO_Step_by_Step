@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student extends Person {
-    private final Klass klass;
+    private Klass klass;
     private final List<String> notifyMessages = new ArrayList<>();
 
     public Student(String name, int age, Klass klass) {
@@ -38,5 +38,12 @@ public class Student extends Person {
 
     public List<String> getNotifyMessages() {
         return notifyMessages;
+    }
+
+    public void setKlass(Klass klass) {
+        Klass previousKlass = this.klass;
+        this.klass = klass;
+        String message = introduceNow();
+        previousKlass.getTeacher().recive(message);
     }
 }

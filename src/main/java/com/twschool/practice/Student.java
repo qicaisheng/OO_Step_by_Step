@@ -20,7 +20,8 @@ public class Student extends Person implements KlassObserver {
     @Override
     public void setName(String name) {
         super.setName(name);
-        klass.notifyChanged(this);
+        String message = introduceNow();
+        klass.notify(message);
     }
 
     @Override
@@ -39,9 +40,9 @@ public class Student extends Person implements KlassObserver {
     public void setKlass(Klass klass) {
         Klass previousKlass = this.klass;
         this.klass = klass;
-        previousKlass.notifyChanged(this);
-        this.klass.notifyChanged(this);
-
+        String message = introduceNow();
+        previousKlass.notify(message);
+        this.klass.notify(message);
     }
 
 }

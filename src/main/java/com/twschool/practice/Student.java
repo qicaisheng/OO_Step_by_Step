@@ -48,6 +48,9 @@ public class Student extends Person {
         previousKlass.getStudents().stream()
                 .filter(student -> !student.getName().equals(getName()))
                 .forEach(otherStudent -> otherStudent.receive(message));
+        klass.getStudents().stream()
+                .filter(student -> !student.getName().equals(getName()))
+                .forEach(otherStudent -> otherStudent.receive(message));
 
     }
 }

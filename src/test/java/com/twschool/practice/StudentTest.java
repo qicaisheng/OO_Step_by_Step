@@ -84,4 +84,24 @@ public class StudentTest {
         Assert.assertEquals("My name is Tom. I am 21 years old. I am a Student of Class 2 now.", messages.get(0));
     }
 
+    @Test
+    public void should_notify_current_klass_students_when_student_change_klass() {
+        Klass klassOne = new Klass(1);
+        Teacher teacher = new Teacher("Matt", 30);
+        Student tom = new Student("Tom", 21, klassOne);
+
+        klassOne.assign(teacher);
+        klassOne.appendMember(tom);
+
+        Klass klassTwo = new Klass(2);
+        Student steven = new Student("Steven", 21, klassTwo);
+        klassTwo.appendMember(steven);
+        
+        tom.setKlass(klassTwo);
+
+        List<String> messages = steven.getNotifyMessages();
+        Assert.assertEquals(1, messages.size());
+        Assert.assertEquals("My name is Tom. I am 21 years old. I am a Student of Class 2 now.", messages.get(0));
+    }
+
 }

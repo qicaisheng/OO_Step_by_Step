@@ -40,20 +40,9 @@ public class Klass implements KlassSubject {
         return teacher;
     }
 
-    public void notifyNameChanged(Student student) {
-        notifyChanged(student);
-    }
-
     public void notifyChanged(Student student) {
         String message = student.introduceNow();
         klassObservers.forEach(klassObserver -> klassObserver.receive(message));
     }
 
-    void notifyKlassJoined(Student student) {
-        notifyChanged(student);
-    }
-
-    void notifyKlassLeaved(Student student) {
-        notifyChanged(student);
-    }
 }

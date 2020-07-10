@@ -41,12 +41,6 @@ public class Klass implements KlassSubject {
     }
 
     @Override
-    public void notifyChanged(Student student) {
-        String message = student.introduceNow();
-        klassObservers.forEach(klassObserver -> klassObserver.receive(message));
-    }
-
-    @Override
     public void notify(String message) {
         klassObservers.forEach(klassObserver -> klassObserver.receive(message));
     }

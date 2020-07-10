@@ -40,6 +40,7 @@ public class Klass implements KlassSubject {
         return teacher;
     }
 
+    @Override
     public void notifyChanged(Student student) {
         String message = student.introduceNow();
         klassObservers.forEach(klassObserver -> klassObserver.receive(message));

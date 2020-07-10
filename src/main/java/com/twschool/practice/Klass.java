@@ -36,17 +36,19 @@ public class Klass {
     }
 
     public void notifyNameChanged(Student student) {
+        notifyChanged(student);
+    }
+
+    private void notifyChanged(Student student) {
         String message = student.introduceNow();
         klassObservers.forEach(klassObserver -> klassObserver.receive(message));
     }
 
     void notifyKlassJoined(Student student) {
-        String message = student.introduceNow();
-        klassObservers.forEach(klassObserver -> klassObserver.receive(message));
+        notifyChanged(student);
     }
 
     void notifyKlassLeaved(Student student) {
-        String message = student.introduceNow();
-        klassObservers.forEach(klassObserver -> klassObserver.receive(message));
+        notifyChanged(student);
     }
 }

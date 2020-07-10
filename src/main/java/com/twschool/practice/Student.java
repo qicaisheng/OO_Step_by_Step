@@ -39,13 +39,9 @@ public class Student extends Person {
     public void setKlass(Klass klass) {
         Klass previousKlass = this.klass;
         this.klass = klass;
-        notifyKlassChanged(previousKlass);
-
-    }
-
-    public void notifyKlassChanged(Klass previousKlass) {
         previousKlass.notifyKlassLeaved(this);
-        klass.notifyKlassJoined(this);
+        this.klass.notifyKlassJoined(this);
+
     }
 
 }

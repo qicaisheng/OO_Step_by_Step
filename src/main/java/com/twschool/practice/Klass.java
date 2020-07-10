@@ -41,16 +41,18 @@ public class Klass {
     }
 
     void notifyKlassJoined(Student student) {
-        getTeacher().receive(student.introduceNow());
+        String message = student.introduceNow();
+        getTeacher().receive(message);
         getStudents().stream()
                 .filter(anyStudent -> !anyStudent.getName().equals(student.getName()))
-                .forEach(otherStudent -> otherStudent.receive(student.introduceNow()));
+                .forEach(otherStudent -> otherStudent.receive(message));
     }
 
     void notifyKlassLeaved(Student student) {
-        getTeacher().receive(student.introduceNow());
+        String message = student.introduceNow();
+        getTeacher().receive(message);
         getStudents().stream()
                 .filter(anyStudent -> !anyStudent.getName().equals(student.getName()))
-                .forEach(otherStudent -> otherStudent.receive(student.introduceNow()));
+                .forEach(otherStudent -> otherStudent.receive(message));
     }
 }

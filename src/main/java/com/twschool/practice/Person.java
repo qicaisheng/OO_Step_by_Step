@@ -1,7 +1,7 @@
 package com.twschool.practice;
 
 public class Person {
-    private final String name;
+    private String name;
     private final int age;
 
     public Person(String name, int age) {
@@ -19,5 +19,9 @@ public class Person {
 
     public int getAge() {
         return age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

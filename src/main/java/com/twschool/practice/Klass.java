@@ -39,7 +39,6 @@ public class Klass {
         String message = student.introduceNow();
         getTeacher().receive(message);
         getStudents().stream()
-                .filter(anyStudent -> !anyStudent.getName().equals(previousName))
                 .forEach(otherStudent -> otherStudent.receive(message));
     }
 
@@ -47,7 +46,6 @@ public class Klass {
         String message = student.introduceNow();
         getTeacher().receive(message);
         getStudents().stream()
-                .filter(anyStudent -> !anyStudent.getName().equals(student.getName()))
                 .forEach(otherStudent -> otherStudent.receive(message));
     }
 
@@ -55,7 +53,6 @@ public class Klass {
         String message = student.introduceNow();
         getTeacher().receive(message);
         getStudents().stream()
-                .filter(anyStudent -> !anyStudent.getName().equals(student.getName()))
                 .forEach(otherStudent -> otherStudent.receive(message));
     }
 }

@@ -44,15 +44,8 @@ public class Student extends Person {
     }
 
     public void notifyKlassChanged(Klass previousKlass) {
-        notifyKlassLeaved(previousKlass);
+        previousKlass.notifyKlassLeaved(this);
         klass.notifyKlassJoined(this);
-    }
-
-    private void notifyKlassLeaved(Klass previousKlass) {
-        previousKlass.getTeacher().receive(introduceNow());
-        previousKlass.getStudents().stream()
-                .filter(student -> !student.getName().equals(getName()))
-                .forEach(otherStudent -> otherStudent.receive(introduceNow()));
     }
 
 }

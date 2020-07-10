@@ -46,4 +46,11 @@ public class Klass {
                 .filter(anyStudent -> !anyStudent.getName().equals(student.getName()))
                 .forEach(otherStudent -> otherStudent.receive(student.introduceNow()));
     }
+
+    void notifyKlassLeaved(Student student) {
+        getTeacher().receive(student.introduceNow());
+        getStudents().stream()
+                .filter(anyStudent -> !anyStudent.getName().equals(student.getName()))
+                .forEach(otherStudent -> otherStudent.receive(student.introduceNow()));
+    }
 }

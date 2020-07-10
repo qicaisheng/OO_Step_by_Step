@@ -31,4 +31,12 @@ public class Klass {
     public Teacher getTeacher() {
         return teacher;
     }
+
+    public void notifyNameChanged(String previousName, Student student) {
+        String message = student.introduceNow();
+        getTeacher().receive(message);
+        getStudents().stream()
+                .filter(anyStudent -> !anyStudent.getName().equals(previousName))
+                .forEach(otherStudent -> otherStudent.receive(message));
+    }
 }

@@ -21,15 +21,7 @@ public class Student extends Person {
     public void setName(String name) {
         String previousName = getName();
         super.setName(name);
-        notifyNameChanged(previousName);
-    }
-
-    public void notifyNameChanged(String previousName) {
-        String message = introduceNow();
-        klass.getTeacher().receive(message);
-        klass.getStudents().stream()
-                .filter(student -> !student.getName().equals(previousName))
-                .forEach(otherStudent -> otherStudent.receive(message));
+        klass.notifyNameChanged(previousName, this);
     }
 
     public void receive(String message) {

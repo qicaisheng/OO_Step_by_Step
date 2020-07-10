@@ -22,13 +22,13 @@ public class Student extends Person {
         String previousName = getName();
         super.setName(name);
         String message = introduceNow();
-        klass.getTeacher().notify(message);
+        klass.getTeacher().recive(message);
         klass.getStudents().stream()
                 .filter(student -> !student.getName().equals(previousName))
-                .forEach(otherStudent -> otherStudent.notify(message));
+                .forEach(otherStudent -> otherStudent.receive(message));
     }
 
-    private void notify(String message) {
+    private void receive(String message) {
         notifyMessages.add(message);
     }
 
